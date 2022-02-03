@@ -64,7 +64,7 @@ public class GetPointServlet extends HttpServlet {
 				String[] s = new String[1];
 				s[0] = result.getString("point");
 				list.add(s);
-				// System.out.println(result.getString("X"));
+				
 			}else {
 				PreparedStatement st2 = connection
 						.prepareStatement("insert into point (shopcode,userid,point_table) value(?,?,500)");
