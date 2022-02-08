@@ -99,5 +99,5 @@ public class GetPointServlet extends HttpServlet {
 		}
 	}
 }
-
+//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
 
