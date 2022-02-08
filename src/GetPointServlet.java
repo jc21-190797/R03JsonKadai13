@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,22 +36,18 @@ public class GetPointServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/getPoint.jsp");
-		//rd.forward(request, response);
+		
 
 		final String driverName = "com.mysql.jdbc.Driver";
-		final String url = "mysql:thin:@192.168.54.190:3306/jsonkadai13";
+		final String url = "jdbc:mysql://192.168.54.190:3306/jsonkadai13";
 		final String id = "jsonkadi13";
 		final String pass = "JsonKadai13";
 
 		try {
 
 			Class.forName(driverName);
-			java.sql.Connection connection = DriverManager.getConnection(url, id, pass);
-			//InitialContext ic = new InitialContext();
-			//DataSource ds = (DataSource) ic.lookup("java:/comp/env/mysql/book");
-			//Connection con = ds.getConnection();
-
+			Connection connection = DriverManager.getConnection(url, id, pass);
+			
 			PreparedStatement st = connection.prepareStatement("select point from point_table where shopcode=? AND userid=?");
 			String  mise = request.getParameter("shopcode");
 			String  namae = request.getParameter("userid");
@@ -87,7 +84,7 @@ public class GetPointServlet extends HttpServlet {
 					System.out.println("êVãKí«â¡é∏îs");
 				}
 			}
-			// String list =request.getParameter("list");
+			
 			request.setAttribute("list", list);
 			RequestDispatcher rd =request.getRequestDispatcher("/WEB-INF/JSP/getPoint.jsp");
 			rd.forward(request, response);
@@ -102,5 +99,5 @@ public class GetPointServlet extends HttpServlet {
 		}
 	}
 }
-
+//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
 
