@@ -96,7 +96,6 @@ public class GetPointServlet extends HttpServlet {
 		 catch (SQLException e) {
 			// TODO ©“®¶¬‚³‚ê‚½ catch ƒuƒƒbƒN
 			e.printStackTrace();
-			
 		}
 	}
 }
