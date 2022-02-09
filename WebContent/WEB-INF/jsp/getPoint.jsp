@@ -5,11 +5,11 @@
     pageEncoding="UTF-8"%>
     
 <%
-Optional<List<String[]>>optList = Optional.ofNullable((List<String[]>)request.getAttribute("list"));
+Optional<List<String[]>>optList = Optional.ofNullable((List<String[]>) request.getAttribute("list"));
 List<String[]> list=new ArrayList<>();
 if(optList.isPresent()){
 	list = optList.get();
-}
+	}
 %>
 <%
 for (String[] s: list){
