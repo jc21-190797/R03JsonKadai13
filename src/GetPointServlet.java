@@ -59,7 +59,7 @@ public class GetPointServlet extends HttpServlet {
 			
 			if (result.next() == true) {
 				String[] s = new String[1];
-				s[0] = result.getString("point");
+				s[0] = result.getString("POINT");
 				list.add(s);
 				
 			}else {
@@ -77,7 +77,7 @@ public class GetPointServlet extends HttpServlet {
 					result = st.executeQuery();
 					if (result.next() == true) {
 						String[]s = new String[1];
-						s[0] = result.getString("point");
+						s[0] = result.getString("POINT");
 						list.add(s);
 					}
 				}else {
