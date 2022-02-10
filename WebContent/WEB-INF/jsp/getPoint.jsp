@@ -13,8 +13,8 @@ if(optList.isPresent()){
 %>
 <%
 for (String[] s: list){
-	%>
-	{"POINT":<%=s[0]%>}
+%>
+{"POINT":<%=s[0]%>}
 <%
 }
 %>
