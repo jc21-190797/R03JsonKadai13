@@ -48,9 +48,9 @@ public class GetPointServlet extends HttpServlet {
 			Class.forName(driverName);
 			Connection connection = DriverManager.getConnection(url, id, pass);
 			
-			PreparedStatement st = connection.prepareStatement("select point from point_table where shopcode=? AND userid=?");
-			String  mise = request.getParameter("shopcode");
-			String  namae = request.getParameter("userid");
+			PreparedStatement st = connection.prepareStatement("select POINT from point where TENPO_ID=? AND USER_ID=?");
+			String  mise = request.getParameter("TENPO_ID");
+			String  namae = request.getParameter("USER_ID");
 			st.setString(1, mise);
 			st.setString(2, namae);
 			ResultSet result = st.executeQuery();
@@ -64,7 +64,7 @@ public class GetPointServlet extends HttpServlet {
 				
 			}else {
 				PreparedStatement st2 = connection
-						.prepareStatement("insert into point (shopcode,userid,point_table) value(?,?,500)");
+						.prepareStatement("insert into point (TENPO_ID,USER_ID,POINT) value(?,?,500)");
 				st2.setString(1,mise);
 				st2.setString(2,namae);
 				
