@@ -40,7 +40,7 @@ public class GetPointServlet extends HttpServlet {
 
 		final String driverName = "com.mysql.jdbc.Driver";
 		final String url = "jdbc:mysql://192.168.54.190:3306/jsonkadai13";
-		final String id = "jsonkadi13";
+		final String id = "jsonkadai13";
 		final String pass = "JsonKadai13";
 
 		try {
