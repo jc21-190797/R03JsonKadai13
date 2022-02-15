@@ -91,11 +91,11 @@ public class GetPointServlet extends HttpServlet {
 		}
 		catch (ClassNotFoundException e) {
 			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			e.printStackTrace(response.getWriter());
 		}
 		 catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			e.printStackTrace(response.getWriter());
 		}
 	}
 }
