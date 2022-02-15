@@ -86,7 +86,7 @@ public class GetPointServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("list", list);
-			RequestDispatcher rd =request.getRequestDispatcher("/WEB-INF/JSP/getPoint.jsp");
+			RequestDispatcher rd =request.getRequestDispatcher("/WEB-INF/jsp/getPoint.jsp");
 			rd.forward(request, response);
 		}
 		catch (ClassNotFoundException e) {
