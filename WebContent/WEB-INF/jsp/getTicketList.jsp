@@ -13,8 +13,8 @@ if(optList.isPresent()){
 %>
 <%
 for (String[] s: list){
-	%>
-	{"ID":<%=s[0]%>,"OptName":<%=s[1]%>,"POINT":<%=s[2]%>}
+%>
+{"ID":<%=s[0]%>,"OptName":<%=s[1]%>,"POINT":<%=s[2]%>}
 <%
 }
 %>
