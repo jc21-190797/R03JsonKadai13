@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -41,7 +39,7 @@ public class GetTicketListServlet extends HttpServlet {
 		
 		final String driverName = "com.mysql.jdbc.Driver";
 		final String url = "jdbc:mysql://192.168.54.190:3306/jsonkadai13";
-		final String id = "jsonkadi13";
+		final String id = "jsonkadai13";
 		final String pass = "JsonKadai13";
 
 		try {
@@ -49,42 +47,45 @@ public class GetTicketListServlet extends HttpServlet {
 			Class.forName(driverName);
 			Connection connection = DriverManager.getConnection(url, id, pass);
 			
-			PreparedStatement st = connection.prepareStatement("select point from ticket_table where ticketid=? AND ticketname=?");
+			PreparedStatement st = connection.prepareStatement("select POINT from ticket where TICKET_ID=? AND TICKET_NAME=?");
 			//select文変更した
 			
-			String  ticket = request.getParameter("ticketid");
-			String  namae = request.getParameter("ticketname");
-			st.setString(1, ticket);
+			String  ticketid = request.getParameter("TICKET_ID");
+			String  namae = request.getParameter("TICKET_NAME");
+			String  point = request.getParameter("POINT");
+			st.setString(1, ticketid);
 			st.setString(2, namae);
+			st.setString(3, point);
 			ResultSet result = st.executeQuery();
 
 			List<String[]> list = new ArrayList<>();
 			
 			if (result.next() == true) {
 				String[]s = new String[3];
-				s[0] = result.getString("ticketid");
-				s[1] = result.getString("ticketname");
-				s[2] = result.getString("point");
+				s[0] = result.getString("TICKET_ID");
+				s[1] = result.getString("TICKET_NAME");
+				s[2] = result.getString("POINT");
 				list.add(s);
 				
 			}else {
 				PreparedStatement st2 = connection
-						.prepareStatement("insert into point (ticketid,ticketname,ticket_table) value(?,?,500)");
-				st2.setString(1,ticket);
+						.prepareStatement("insert into ticket (TICKET_ID,TICKET_NAME,ticket) value(?,?,500)");
+				st2.setString(1,ticketid);
 				st2.setString(2,namae);
-				
+				st2.setString(3, point);
 				int x = st2.executeUpdate();
 				
 				if(x == 1) {
 					System.out.println("新規追加成功");
-					st.setString(1, ticket);
+					st.setString(1, ticketid);
 					st.setString(2, namae);
+					st.setString(3, point);
 					result = st.executeQuery();
 					if (result.next() == true) {
 						String[]s = new String[3];
-						s[0] = result.getString("ticketid");
-						s[1] = result.getString("ticketname");
-						s[2] = result.getString("point");
+						s[0] = result.getString("TICKET_ID");
+						s[1] = result.getString("TICKET_NAME");
+						s[2] = result.getString("POINT");
 						list.add(s);
 					}
 				}else {
@@ -93,16 +94,16 @@ public class GetTicketListServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("list", list);
-			RequestDispatcher gt =request.getRequestDispatcher("/WEB-INF/JSP/getTicket.jsp");
+			RequestDispatcher gt =request.getRequestDispatcher("/WEB-INF/jsp/getTicketList.jsp");
 			gt.forward(request, response);
 		}
 		catch (ClassNotFoundException e) {
 			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			e.printStackTrace(response.getWriter());
 		}
 		 catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			 e.printStackTrace(response.getWriter());
 		}
 	}
 }
