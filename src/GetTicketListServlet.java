@@ -47,7 +47,7 @@ public class GetTicketListServlet extends HttpServlet {
 			Class.forName(driverName);
 			Connection connection = DriverManager.getConnection(url, id, pass);
 			
-			PreparedStatement st = connection.prepareStatement("select POINT from ticket where TICKET_ID=? AND TICKET_NAME=?");
+			PreparedStatement st = connection.prepareStatement("select TICKET_ID,TICKET_NAME,POINT from ticket where TICKET_ID=? AND TICKET_NAME=? AND POINT=?");
 			//selectï∂ïœçXÇµÇΩ
 			
 			String  ticketid = request.getParameter("TICKET_ID");
@@ -69,7 +69,7 @@ public class GetTicketListServlet extends HttpServlet {
 				
 			}else {
 				PreparedStatement st2 = connection
-						.prepareStatement("insert into ticket (TICKET_ID,TICKET_NAME,ticket) value(?,?,500)");
+						.prepareStatement("insert into ticket (TICKET_ID,TICKET_NAME,ticket) value(?,?,?)");
 				st2.setString(1,ticketid);
 				st2.setString(2,namae);
 				st2.setString(3, point);
