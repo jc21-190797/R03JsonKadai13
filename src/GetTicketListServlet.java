@@ -69,17 +69,17 @@ public class GetTicketListServlet extends HttpServlet {
 				
 			}else {
 				PreparedStatement st2 = connection
-						.prepareStatement("insert into ticket (TICKET_ID,TICKET_NAME,ticket) value(?,?,?)");
+						.prepareStatement("insert into ticket (TICKET_ID,TICKET_NAME,POINT) value(?,?,?)");
 				st2.setString(1,ticketid);
 				st2.setString(2,namae);
-				st2.setString(3, point);
+				st2.setString(3,point);
 				int x = st2.executeUpdate();
 				
 				if(x == 1) {
 					System.out.println("êVãKí«â¡ê¨å˜");
-					st.setString(1, ticketid);
-					st.setString(2, namae);
-					st.setString(3, point);
+					st.setString(1,ticketid);
+					st.setString(2,namae);
+					st.setString(3,point);
 					result = st.executeQuery();
 					if (result.next() == true) {
 						String[]s = new String[3];
