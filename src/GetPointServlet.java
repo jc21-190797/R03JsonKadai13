@@ -40,7 +40,7 @@ public class GetPointServlet extends HttpServlet {
 
 		final String driverName = "com.mysql.jdbc.Driver";
 		final String url = "jdbc:mysql://192.168.54.190:3306/jsonkadai13";
-		final String id = "jsonkadi13";
+		final String id = "jsonkadai13";
 		final String pass = "JsonKadai13";
 
 		try {
@@ -86,16 +86,16 @@ public class GetPointServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("list", list);
-			RequestDispatcher rd =request.getRequestDispatcher("/WEB-INF/JSP/getPoint.jsp");
+			RequestDispatcher rd =request.getRequestDispatcher("/WEB-INF/jsp/getPoint.jsp");
 			rd.forward(request, response);
 		}
 		catch (ClassNotFoundException e) {
 			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			e.printStackTrace(response.getWriter());
 		}
 		 catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			e.printStackTrace(response.getWriter());
 		}
 	}
 }
